@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { AUTH_USER, AUTH_ERROR } from './types';
+import { AUTH_USER, AUTH_ERROR, UNAUTH_USER } from './types';
 
 const ROOT_URL = 'http://localhost:3090';
 
@@ -9,7 +9,7 @@ export const signInUser = (values, callback) => async dispatch => {
 		const res = await axios.post(`${ROOT_URL}/signin`, values);
 		// If request is good...
 		// Update state to indicate user is authenticated
-		dispatch({ type: AUTH_USER, payload: res.data });
+		dispatch({ type: AUTH_USER});
 		// Save the JWT token
 		localStorage.setItem('token', res.data.token);
 		// redirect to the route /feature
@@ -27,3 +27,10 @@ export const authError = error => {
 		payload: error
 	};
 };
+
+export const signOutUser = () => {
+	localStorage.removeItem('token')
+	return {
+		type: UNAUTH_USER
+	}
+}

@@ -29,11 +29,17 @@ class Header extends Component {
 
 	render() {
 		return (
-			<nav className="navbar navbar-light">
-				<Link to="/" className="navbar-brand">
-					Redux Auth
-				</Link>
-				<ul className="nav navbar-nav">{this.renderList()}</ul>
+			<nav className="navbar navbar-inverse navbar-fixed-top">
+				<div className="container">
+					<Link to="/" className="navbar-brand">
+						<span
+							className="glyphicon glyphicon-picture"
+							aria-hidden="true"
+						/>{' '}
+						IMGS
+					</Link>
+					<ul className="nav navbar-nav navbar-right">{this.renderList()}</ul>
+				</div>
 			</nav>
 		);
 	}
